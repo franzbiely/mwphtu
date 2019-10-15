@@ -51,7 +51,7 @@ code {
   cursor: pointer;
 }
 .HowToUseApp {
-  margin:30px;
+  margin:100px 30px;
 }
 .HowToUseApp .books ul, 
 .HowToUseApp .books li,
