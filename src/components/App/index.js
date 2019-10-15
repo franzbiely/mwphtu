@@ -35,7 +35,7 @@ class App extends React.Component {
         }
       },
       isOpen: false,
-      books_header: 'How to Books',
+      books_header: 'Our Books',
       books: [],
       selectedVideo : ''
     }
@@ -57,7 +57,9 @@ class App extends React.Component {
             .substring(result.content.rendered.indexOf('<figure'),
               result.content.rendered.length)
             .match(/embed\/(.*)\?/g)
-            .map(i => i.substring(i.lastIndexOf('/') + 1, i.lastIndexOf('?')))
+            .map(i => i.substring(i.lastIndexOf('/') + 1, i.lastIndexOf('?'))),
+          cta: result.content.rendered
+            .substring(result.content.rendered.indexOf('wp-block-separator"/>')+21, result.content.rendered.length)
         })
       })
 
@@ -75,9 +77,9 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="HowToUseApp">
         <header className="App-header">
-          <h1>{this.state.title}</h1>
+          <h2 className="page-header">{this.state.title}</h2>
           <div className="description" dangerouslySetInnerHTML={{ __html: this.state.description }} />
         </header>
         <section className="videos">
@@ -85,10 +87,15 @@ class App extends React.Component {
           <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId={this.state.selectedVideo} onClose={() => this.setState({ isOpen: false })} />
           <Carousel {...this.state.video_config}>
             {this.state.videos.map( (item, key) =>
-              <img className="video-thumb" onClick={() => this.openModal(item)} src={'http://img.youtube.com/vi/' + item + '/0.jpg'} />
+            <div>
+              <span class="playbutton"></span>
+              <img key={key} className="video-thumb" onClick={() => this.openModal(item)} src={'http://img.youtube.com/vi/' + item + '/0.jpg'} />
+            </div>
+              
             )}
           </Carousel>
         </section>
+        <section className="call-to-action" dangerouslySetInnerHTML={{__html:this.state.cta}}></section>
         <section className="books">
           <h3>{this.state.books_header}</h3>
           <ul>

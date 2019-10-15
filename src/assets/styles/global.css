@@ -11,10 +11,76 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.videos li {
+.HowToUseApp .videos li {
   margin:10px;
+  transition:0.2s linear;
 }
-.video-thumb {
+.HowToUseApp .playbutton {
+  opacity:0;
+  width: 60px;
+  background: orange;
+  height: 60px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  top: 50%;
+  margin-top: -30px;
+  border-radius: 100%;
+  transition:0.5s linear;
+  box-shadow:1px 1px 1px #333;
+  pointer-events:none;
+}
+.HowToUseApp .playbutton:after {
+  color:#fff;
+  content: '\27B2';
+  font-size: 50px;
+  left: 9px;
+  position: absolute;
+  top: -5px;
+}
+.HowToUseApp .react-multi-carousel-list:hover li {
+  opacity:0.2;
+}
+.HowToUseApp .videos li:hover,
+.HowToUseApp .videos li:hover .playbutton{
+  opacity:1;
+}
+.HowToUseApp .video-thumb {
   width:100%;
   cursor: pointer;
+}
+.HowToUseApp {
+  margin:30px;
+}
+.HowToUseApp .books ul, 
+.HowToUseApp .books li,
+.HowToUseApp .books figure{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex:1;
+  background-color:#ccc;
+}
+.HowToUseApp .books img{width:100%}
+.HowToUseApp .books figure{
+  float: left;
+  width: 50%;
+  margin: 0 20px;
+}
+.HowToUseApp .wp-block-button a{
+  background-color: #f0ad4e;
+  border-color: #eea236;
+  padding: 6px 12px;
+  font-size: 14px;
+  transition: color 150ms;
+  color: #444;
+  text-decoration: none;
+  border-radius:5px;
+}
+.HowToUseApp .wp-block-button a:hover {
+  border: 2px outset;
+  padding:4px 11px;
+  color:#111;
 }
